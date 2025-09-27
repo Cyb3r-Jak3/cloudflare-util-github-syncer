@@ -15,7 +15,7 @@ jobs:
         uses: Cyb3r-Jak3/actions-cloudflare-utils@v1
         with:
           version: 'latest'
-          args: sync-list --list-id c287385be79d45aca2e653e996a20ec6 preset://github
+          args: sync-list --list-name github_actions_ips --source preset://github
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
