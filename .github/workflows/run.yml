@@ -1,0 +1,21 @@
+name: Sync IPs
+
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at midnight
+  workflow_dispatch:
+
+
+jobs:
+  sync-ips:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Cloudflare Utils
+        uses: Cyb3r-Jak3/actions-cloudflare-utils@v1
+        with:
+          version: 'latest'
+          args: sync-list --list-id c287385be79d45aca2e653e996a20ec6 preset://github
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
